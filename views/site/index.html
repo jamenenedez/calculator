@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v4.0.0-alpha.2
+* @link https://coreui.io
+* Copyright (c) 2021 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">        
+
+    <!--JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-resource.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-animate/1.8.2/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.8.2/angular-touch.min.js"></script>        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>    
+    <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.4/angular-datatables.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local-storage.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="views/site/css/dashboard.css">
+    <link rel="stylesheet" href="views/site/css/login.css">
+    <link rel="stylesheet" href="views/user/css/modal.css">
+
+    <script src="../../controllers/control.js"></script>
+    <script src="../../controllers/site.js"></script>
+    <script src="../../controllers/user.js"></script>
+    <script src="../../controllers/service.js"></script>
+    <script src="../../controllers/record.js"></script>
+    <script src="views/site/js/script.js"></script>
+   
+  </head>
+  <body>
+        <!-- Page Content Holder -->
+    <div id="content">
+        <div ng-view></div>
+    </div>            
+  </body>
+</html>

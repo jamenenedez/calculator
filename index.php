@@ -1,1 +1,1 @@
-<?php require_once(__DIR__ . '/frontend/views/site/index.html');?>
+<?php require_once(__DIR__ . '/views/site/index.html');?>

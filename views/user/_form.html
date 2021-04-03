@@ -1,0 +1,50 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="_formUser">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">{{ header_name }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div ng-if="details" ng-include="'../views/user/_view.html'" class="card" style="width: 100%; margin-bottom: 10px;"></div>
+                <div ng-show="!insert" class="form-group">
+                    <button type="button" class="btn btn-default" ng-click="show_form()">{{ behavior_btn }}</button>
+                </div>
+                <div ng-show="update || insert">
+                    <div ng-show="!balance" class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" ng-model="user.username" class="form-control" />
+                    </div>
+                    <div ng-show="!balance" class="form-group">
+                        <label>Role</label>
+                        <select name="role" ng-model="user.role" class="form-control" ng-options="role for role in user.roles">
+								<option value="">Select an option</option>
+							</select>
+                    </div>
+                    <div ng-show="insert" class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" ng-model="user.password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Balance</label>
+                        <input type="number" name="balance" ng-model="user.balance" step=".01" class="form-control" />
+                    </div>
+                    <div ng-show="!balance" class="form-group">
+                        <label>Status</label>
+                        <select name="status" ng-model="user.status" class="form-control" ng-options="status for status in user.statuses">
+								<option value="">Select an option</option>
+							</select>
+                    </div>
+                    <div class="modal-footer">
+                        <input ng-show="update" type="hidden" name="id" value="{{user.id}}" />
+                        <input type="submit" name="submit" id="submit" ng-click="insert_data()" class="btn btn-info" value="{{submit_button}}" />
+                        <button ng-show="update" type="button" class="btn btn-warning" ng-click="delete_data(user.id)">Delete</button>
+                        <button ng-show="insert" type="button" class="btn btn-default" ng-click="cancel_data()">Clear</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
