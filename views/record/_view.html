@@ -1,0 +1,20 @@
+<div class="card-header">
+    Info
+</div>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+        <b>UID: </b>{{ record.uuid }}</b>
+    </li>
+    <li class="list-group-item">
+        <b>User: </b>{{ record.user }}</b>
+    </li>
+    <li class="list-group-item">
+        <b>Service: </b>{{ record.service }}</b>
+    </li>
+    <li class="list-group-item">
+        <b>Response: </b>{{ record.service_response }}</b>
+    </li>
+    <li class="list-group-item">
+        <b>Cost: </b>{{ record.cost | currency}}</b>
+    </li>
+</ul>

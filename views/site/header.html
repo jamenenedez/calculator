@@ -1,101 +1,117 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="navbar_top" class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
 
-        <!--<button type="button" id="sidebarCollapse" class="btn btn-info">
-            <i class="fas fa-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>-->
-        <!--<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-align-justify"></i>
-        </button>-->
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li> -->
 
-        <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-
-        <div id="navbarDashbaord">
+        <!-- <div>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="cursor:pointer;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div> -->
+        <div>
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#!/dashboard">Home</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>-->
             </ul>
         </div>
 
-        <div ng-show="checkAccess()" id="navbarUsers">
+        <!-- <div class="dropdown" ng-show="checkAccess()">
+            <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Users
+                </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#!/users">Users Management</a>
+            <a class="dropdown-item" href="#!/users/balance">Users Balance Management</a>
+        </div> -->
+        <div ng-show="checkAccess()">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/users">Users</a>
+                    <a class="nav-link" href="#!/users">Users Management</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>-->
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#!/users/balance">Users Balance Management</a>
+                </li> -->
             </ul>
         </div>
-
-        <div ng-show="checkAccess()" id="navbarUsersBalance">
+        <div ng-show="checkAccess()">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/users/balance">Users Balance</a>
+                    <a class="nav-link" href="#!/users/balance">Users Balance Management</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>-->
             </ul>
         </div>
 
-        <div id="navbarUsers">
+        <div ng-show="checkAccess()">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#!/services">Services</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>-->
             </ul>
         </div>
 
-        <div id="navbarUsers">
+        <div ng-show="checkAccess()">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/records">Records</a>
+                    <a class="nav-link" href="#!/records">Records Report</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>-->
             </ul>
         </div>
 
-        <div id="navbarSupportedContent">
+        <div>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/records/user">My Records</a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/record/create">New Service</a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/user/profile">Profile</a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#" ng-controller="dashboardCtrl" ng-click="logout()">Logout ({{ user.username }})</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#!/users">User Admin</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>-->
             </ul>
         </div>
     </div>
 </nav>
+<div id="overlay" style="display:none;">
+    <div class="spinner"></div>
+    <br/> Loading...
+</div>

@@ -1,11 +1,15 @@
 angular.module("app")
     .controller("userCtrl", ["$scope", "$http", "$resource", "localStorageService", function(m, h, r, s) {
         m.user = {};
-        m.user.role = s.get("role");
         m.user.roles = ['user', 'admin'];
         m.user.statuses = ['active', 'trial', 'inactive'];
         m.btnName = "Insert";
         m.insert_data = function() {
+            m.user.password = CryptoJS.AES.encrypt(
+                    m.user.password,
+                    s.get('base64Key'), { iv: s.get('iv') })
+                .ciphertext.toString(CryptoJS.enc.Base64);
+
             if (m.btnName == "Update") {
                 h.put(
                     "http://local.restapicalculator.com/api/v1/user/" + m.user.id, {
@@ -21,7 +25,7 @@ angular.module("app")
                     } else {
                         alert(response.data.error.text);
                     }
-                    angular.element("#_formUser").modal("hide");
+                    angular.element("#_form").modal("hide");
                     m.user.username = null;
                     m.user.password = null;
                     m.user.role = null;
@@ -93,7 +97,7 @@ angular.module("app")
                     } else {
                         alert(response.data.error.text);
                     }
-                    angular.element("#_formUser").modal("hide");
+                    angular.element("#_form").modal("hide");
                     m.show_data();
                 });
             } else {
@@ -141,18 +145,41 @@ angular.module("app")
             m.behavior_btn = "Edit";
             m.submit_button = 'Save';
             m.btnName = "Update";
-            angular.element("#_formUser").modal("show");
+            angular.element("#_form").modal("show");
         }
         m.create_data = function() {
             m.details = false;
             m.insert = true;
             m.update = false;
+
+            m.user.id = null;
+            m.user.uuid = null;
+            m.user.username = null;
+            m.user.role = null;
+            m.user.status = null;
+            m.user.balance = null;
+
             m.header_name = "Create new user";
             m.submit_button = 'Save';
             m.btnName = "Insert";
-            angular.element("#_formUser").modal("show");
+            angular.element("#_form").modal("show");
         }
         m.checkAccess = function() {
-            return m.user.role == 'admin';
+            return s.get("role") == 'admin';
         }
-    }]);
+    }]).controller('profileCtrl', ["$scope", "$http", "$resource", "localStorageService", function(m, h, r, s) {
+        r('http://local.restapicalculator.com/api/v1/user/:id').get({ id: s.get('id') }).$promise.then(function(response) {
+            m.user = response;
+        });
+        m.checkAccess = function() {
+            return s.get("role") == 'admin';
+        }
+    }]).filter('split', function() {
+        return function(input, splitChar, splitIndex) {
+            // do some bounds checking here to ensure it has that index
+            if (input) {
+                return input.split(splitChar)[splitIndex];
+            }
+            return false;
+        }
+    });

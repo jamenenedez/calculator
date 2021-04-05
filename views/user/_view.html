@@ -8,11 +8,11 @@
     <li class="list-group-item">
         <b>Username: </b>{{ user.username }}</b>
     </li>
-    <li class="list-group-item">
+    <li ng-show="!balance" class="list-group-item">
         <b>Role: </b>{{ user.role }}</b>
     </li>
     <li class="list-group-item">
-        <b>Balance: </b>{{ user.balance }}</b>
+        <b>Balance: </b>{{ user.balance | currency }}</b>
     </li>
     <li ng-show="!balance" class="list-group-item">
         <b>Status: </b>{{ user.status }}</b>

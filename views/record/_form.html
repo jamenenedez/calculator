@@ -1,0 +1,47 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="_form">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">{{ header_name }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div ng-if="details" ng-include="'../views/record/_view.html'" class="card" style="width: 100%; margin-bottom: 10px;"></div>
+                <div ng-show="!insert && !personal" class="form-group">
+                    <button type="button" class="btn btn-default" ng-click="show_form()">{{ behavior_btn }}</button>
+                </div>
+                <div ng-show="update || insert">
+                    <div class="form-group">
+                        <label>User</label>
+                        <select name="user_id" ng-model="record.user_id" class="form-control">
+                            <option value="">Select an option</option>
+                            <option ng-repeat="user in record.users" ng-value="user.id">{{user.username}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Service</label>
+                        <select name="service_id" ng-model="record.service_id" class="form-control">
+                            <option value="">Select an option</option>
+                            <option ng-repeat="service in record.services" ng-value="service.id">{{service.type}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Response</label>
+                        <input type="text" name="service_response" ng-model="record.service_response" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Cost</label>
+                        <input type="number" name="cost" ng-model="record.cost" step=".01" class="form-control" />
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" name="submit" id="submit" ng-click="insert_data()" class="btn btn-info" value="{{submit_button}}" />
+                        <button ng-show="update" type="button" class="btn btn-warning" ng-click="delete_data(record.id)">Delete</button>
+                        <button ng-show="insert" type="button" class="btn btn-default" ng-click="cancel_data()">Clear</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

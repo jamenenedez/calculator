@@ -1,17 +1,25 @@
 angular.module("app")
     .controller("loginCtrl", ["$scope", "$location", "localStorageService", "$http", function(m, l, s, h) {
+        s.set('base64Key', CryptoJS.enc.Hex.parse('0123456789abcdef0123456789abcdef'));
+        s.set('iv', CryptoJS.enc.Hex.parse('abcdef9876543210abcdef9876543210'));
         m.submit = function() {
             h.get('http://local.restapicalculator.com/api/v1/users?username=' +
                 m.username).then(function(response) {
-                debugger
                 if (response.data.length > 0) {
                     if (response.data[0].status == 'inactive') {
                         alert("Your user is inactive. Contact with administrator");
                     } else {
-                        if (response.data[0].password == m.password) {
+
+                        let password = CryptoJS.AES.encrypt(
+                            m.password,
+                            s.get('base64Key'), { iv: s.get('iv') }).ciphertext.toString(CryptoJS.enc.Base64);
+
+
+                        if (response.data[0].password == password) {
                             s.set('loggedIn', true);
                             s.set('username', response.data[0].username);
                             s.set('role', response.data[0].role);
+                            s.set('id', response.data[0].id);
                             l.path('/dashboard');
                         } else {
                             alert("Wrong credentials");
@@ -21,7 +29,7 @@ angular.module("app")
             })
         };
     }])
-    .controller("dashboardCtrl", ["$scope", "$location", "localStorageService", "$timeout", function(m, l, s, t) {
+    .controller("dashboardCtrl", ["$scope", "$location", "localStorageService", "$timeout", "$window", function(m, l, s, t, w) {
         m.user = {};
         m.loggedIn = s.get('loggedIn');
 
@@ -52,6 +60,12 @@ angular.module("app")
         }
 
         t(m.tick, m.tickInterval);
+
+        m.onExit = function() {
+            return ('bye bye')
+        };
+
+        w.onbeforeunload = m.onExit();
 
         m.checkAccess = function() {
             return m.user.role == 'admin';

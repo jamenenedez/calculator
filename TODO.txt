@@ -1,3 +1,19 @@
-Config datatable filter for username only
-Add 3DES password security
+Required
+----------------------------------------------------------------
+Dockerized environment (backend)
+Docker Compose for local environment (backend)
+Use of ORM is permitted but not required
+All resources should be soft-deleted (done)
+DB schema migrations system
+Use third party service for random string https://www.random.org/clients (done)
+All client-server interaction should be through RESTful API (versionated) (done)
+Entity endpoints should be able to provide filters and pagination (done)
+Use a CSS / Design library such as Material, Bulma, Bootstrap, Spectre, etc. (done)
+
+Extra
+----------------------------------------------------------------
 Add a notification when logged in
+Add a notification when trying close window
+Check service table design to allow new types
+Add charts to dashboard
+Redesigne navbar

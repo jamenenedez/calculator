@@ -1,4 +1,4 @@
-angular.module("app", ['ngRoute', 'LocalStorageModule', 'datatables', 'ngResource', 'ui.bootstrap'])
+angular.module("app", ['ngRoute', 'LocalStorageModule', 'datatables', 'ngResource', 'ui.bootstrap', 'ngAnimate', 'angularjs-crypto'])
     .config(function($routeProvider) {
         $routeProvider
             .when('/', {
@@ -21,8 +21,12 @@ angular.module("app", ['ngRoute', 'LocalStorageModule', 'datatables', 'ngResourc
                 controller: 'userCtrl'
             })
             .when('/users/balance', {
-                templateUrl: '../views/user/usersBalance.html',
+                templateUrl: '../views/user/balance.html',
                 controller: 'userCtrl'
+            })
+            .when('/user/profile', {
+                templateUrl: '../views/user/profile.html',
+                controller: 'profileCtrl'
             })
             .when('/services', {
                 templateUrl: '../views/service/admin.html',
@@ -31,6 +35,14 @@ angular.module("app", ['ngRoute', 'LocalStorageModule', 'datatables', 'ngResourc
             .when('/records', {
                 templateUrl: '../views/record/admin.html',
                 controller: 'recordCtrl'
+            })
+            .when('/records/user', {
+                templateUrl: '../views/record/records.html',
+                controller: 'recordCtrl'
+            })
+            .when('/record/create', {
+                templateUrl: '../views/record/create.html',
+                controller: 'createCtrl'
             })
             .otherwise({
                 redirectTo: '/',

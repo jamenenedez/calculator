@@ -1,0 +1,27 @@
+<div ng-include="'../views/site/header.html'"></div>
+
+<div class="card col-8 offset-md-2" style="width: 100%;">
+    <div class="card-body">
+        <h5 class="card-title">Request a service</h5>
+        <form>
+            <div class="form-group">
+                <label for="service_id">Service</label>
+                <select name="service_id" ng-model="record.service_id" class="form-control" ng-change="updateOperation(record.service_id)">
+                    <option value="">Select an option</option>
+                    <option ng-repeat="service in record.services" ng-value="service.id">{{service.type}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="str">Operation</label>
+                <input type="text" class="form-control" id="operation" ng-model="record.operation" placeholder="Enter operation" ng-disabled="check()">
+            </div>
+            <div class="form-group">
+                <label for="str">Result</label>
+                <textarea type="text" class="form-control" id="result" ng-model="record.result">
+                    
+                </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="create_data()">Submit</button>
+        </form>
+    </div>
+</div>
