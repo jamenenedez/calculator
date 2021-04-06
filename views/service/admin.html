@@ -3,24 +3,26 @@
     <h3 class="text-center">Service Management <button type="button" ng-click="create_data()" class="btn btn-success">Add Service</button></h3>
     <div ng-app="app" ng-init="show_data()">
         <div class="col-8 offset-md-2">
-            <table class="table table-striped" datatable="ng">
-                <thead>
-                    <tr class="text-center">
-                        <th>UID</th>
-                        <th>Type</th>
-                        <th>Cost</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="x in services">
-                        <td style="cursor: pointer" ng-click="show_details(x)">{{x.uuid}}</td>
-                        <td style="cursor: pointer" ng-click="show_details(x)">{{x.type}}</td>
-                        <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.cost | currency}}</td>
-                        <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.status}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped" datatable="ng">
+                    <thead>
+                        <tr class="text-center">
+                            <th>UID</th>
+                            <th>Type</th>
+                            <th>Cost</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in services">
+                            <td style="cursor: pointer" ng-click="show_details(x)">{{x.uuid}}</td>
+                            <td style="cursor: pointer" ng-click="show_details(x)">{{x.type}}</td>
+                            <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.cost | currency}}</td>
+                            <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

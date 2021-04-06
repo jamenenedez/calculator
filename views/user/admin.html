@@ -2,29 +2,30 @@
 <div class="col-md-12">
     <h3 class="text-center">User Management <button type="button" ng-click="create_data()" class="btn btn-success">Add User</button></h3>
     <div ng-init="show_data()">
-        <div class="row">
-
+        <div class="row-fluid">
             <div class="col-8 offset-md-2">
-                <table id="userDatatable" class="table table-striped" datatable="ng">
-                    <thead>
-                        <tr class="text-center">
-                            <th>UID</th>
-                            <th>Username</th>
-                            <th>Role</th>
-                            <th>Balance</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="x in users">
-                            <td style="cursor: pointer" ng-click="show_details(x)">{{x.uuid}}</td>
-                            <td style="cursor: pointer" ng-click="show_details(x)">{{x.username}}</td>
-                            <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.role}}</td>
-                            <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.balance | currency}}</td>
-                            <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.status}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="userDatatable" class="table table-striped" datatable="ng">
+                        <thead>
+                            <tr class="text-center">
+                                <th>UID</th>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>Balance</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in users">
+                                <td style="cursor: pointer" ng-click="show_details(x)">{{x.uuid}}</td>
+                                <td style="cursor: pointer" ng-click="show_details(x)">{{x.username}}</td>
+                                <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.role}}</td>
+                                <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.balance | currency}}</td>
+                                <td class="text-center" style="cursor: pointer" ng-click="show_details(x)">{{x.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

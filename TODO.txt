@@ -10,6 +10,18 @@ All client-server interaction should be through RESTful API (versionated) (done)
 Entity endpoints should be able to provide filters and pagination (done)
 Use a CSS / Design library such as Material, Bulma, Bootstrap, Spectre, etc. (done)
 
+Plus features:
+----------------------------------------------------------------
+- Reset password mechanism
+- “Change my password” mechanism
+- RBAC system
+- Database normalization
+- Cluster mode and concurrency
+- Unit test and any other automated testing (whether frontend or backend)
+- CI deployment system
+- Web conventions usage
+- Deployment to a cloud provider using infrastructure as code.
+
 Extra
 ----------------------------------------------------------------
 Add a notification when logged in

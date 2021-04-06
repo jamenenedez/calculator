@@ -6,7 +6,6 @@ angular.module("app")
             if (!s.get('host')) {
                 s.set('host', response.host);
             }
-
         });
         m.submit = function() {
             h.get(s.get('host') + '/api/v1/users?username=' +
@@ -31,6 +30,8 @@ angular.module("app")
                             alert("Wrong credentials");
                         }
                     }
+                } else {
+                    alert("Username or password incorrect");;
                 }
             })
         };
