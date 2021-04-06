@@ -3,12 +3,12 @@ angular.module("app")
         m.record = {};
         m.id = s.get("id");
         m.btnName = "Insert";
-        m.record.services = r('http://local.restapicalculator.com/api/v1/services?status=active').query();
-        m.record.users = r('http://local.restapicalculator.com/api/v1/users').query();
+        m.record.services = r(s.get('host') + '/api/v1/services?status=active').query();
+        m.record.users = r(s.get('host') + '/api/v1/users').query();
         m.insert_data = function() {
             if (m.btnName == "Update") {
                 h.put(
-                    "http://local.restapicalculator.com/api/v1/record/" + m.record.id, {
+                    s.get('host') + "/api/v1/record/" + m.record.id, {
                         'service_id': m.record.service_id,
                         'user_id': m.record.user_id,
                         'service_response': m.record.service_response,
@@ -35,10 +35,10 @@ angular.module("app")
             let params = { status: '@status' };
             if (load == 'custom') {
                 params.user_id = '@user_id';
-                m.records = r('http://local.restapicalculator.com/api/v1/records?user_id=:user_id&status=:status', params)
+                m.records = r(s.get('host') + '/api/v1/records?user_id=:user_id&status=:status', params)
                     .query({ status: 'active', user_id: m.id });
             } else {
-                m.records = r('http://local.restapicalculator.com/api/v1/records?status=:status', params)
+                m.records = r(s.get('host') + '/api/v1/records?status=:status', params)
                     .query({ status: 'active' });
             }
             if (load == 'full') {
@@ -63,7 +63,7 @@ angular.module("app")
         m.delete_data = function(id) {
             if (confirm("Are you sure you want to delete?")) {
                 h.put(
-                    "http://local.restapicalculator.com/api/v1/record/" + id, {
+                    s.get('host') + "/api/v1/record/" + id, {
                         'status': 'inactive'
                     }
                 ).then(function(response) {
@@ -148,14 +148,14 @@ angular.module("app")
         m.record.user_id = s.get("id");
         m.record.operation = "";
         m.record.result = "";
-        m.record.services = r('http://local.restapicalculator.com/api/v1/services?status=active').query();
+        m.record.services = r(s.get('host') + '/api/v1/services?status=active').query();
         m.create_data = function() {
             if (m.record.service_id == null) {
                 alert("Select a Service");
             } else {
                 angular.element('#overlay').fadeIn();
                 h.post(
-                    "http://local.restapicalculator.com/api/v1/record", {
+                    s.get('host') + "/api/v1/record", {
                         'str': m.record.operation,
                         'user_id': m.record.user_id,
                     }

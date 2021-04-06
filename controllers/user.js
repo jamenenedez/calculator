@@ -12,7 +12,7 @@ angular.module("app")
 
             if (m.btnName == "Update") {
                 h.put(
-                    "http://local.restapicalculator.com/api/v1/user/" + m.user.id, {
+                    s.get('host') + "/api/v1/user/" + m.user.id, {
                         'username': m.user.username,
                         'password': m.user.password,
                         'role': m.user.role,
@@ -47,7 +47,7 @@ angular.module("app")
                     alert("Enter Your Balance");
                 } else {
                     h.post(
-                        "http://local.restapicalculator.com/api/v1/user", {
+                        s.get('host') + "/api/v1/user", {
                             'username': m.user.username,
                             'password': m.user.password,
                             'role': m.user.role,
@@ -72,7 +72,7 @@ angular.module("app")
         }
         m.show_data = function(load = 'full') {
             //TODO use pagination from server
-            m.users = r('http://local.restapicalculator.com/api/v1/users?status=active').query();
+            m.users = r(s.get('host') + '/api/v1/users?status=active').query();
             setTimeout(() => {
                 var table = angular.element("#userDatatable").DataTable();
                 // Setup datatable search field
@@ -88,7 +88,7 @@ angular.module("app")
         m.delete_data = function(id) {
             if (confirm("Are you sure you want to delete?")) {
                 h.put(
-                    "http://local.restapicalculator.com/api/v1/user/" + id, {
+                    s.get('host') + "/api/v1/user/" + id, {
                         'status': 'inactive'
                     }
                 ).then(function(response) {
@@ -168,7 +168,7 @@ angular.module("app")
             return s.get("role") == 'admin';
         }
     }]).controller('profileCtrl', ["$scope", "$http", "$resource", "localStorageService", function(m, h, r, s) {
-        r('http://local.restapicalculator.com/api/v1/user/:id').get({ id: s.get('id') }).$promise.then(function(response) {
+        r(s.get('host') + '/api/v1/user/:id').get({ id: s.get('id') }).$promise.then(function(response) {
             m.user = response;
         });
         m.checkAccess = function() {

@@ -1,9 +1,15 @@
 angular.module("app")
-    .controller("loginCtrl", ["$scope", "$location", "localStorageService", "$http", function(m, l, s, h) {
+    .controller("loginCtrl", ["$scope", "$location", "localStorageService", "$http", "$resource", function(m, l, s, h, r) {
         s.set('base64Key', CryptoJS.enc.Hex.parse('0123456789abcdef0123456789abcdef'));
         s.set('iv', CryptoJS.enc.Hex.parse('abcdef9876543210abcdef9876543210'));
+        r('../config/config.json').get().$promise.then(function(response) {
+            if (!s.get('host')) {
+                s.set('host', response.host);
+            }
+
+        });
         m.submit = function() {
-            h.get('http://local.restapicalculator.com/api/v1/users?username=' +
+            h.get(s.get('host') + '/api/v1/users?username=' +
                 m.username).then(function(response) {
                 if (response.data.length > 0) {
                     if (response.data[0].status == 'inactive') {

@@ -6,7 +6,7 @@ angular.module("app")
         m.insert_data = function() {
             if (m.btnName == "Update") {
                 h.put(
-                    "http://local.restapicalculator.com/api/v1/service/" + m.service.id, {
+                    s.get('host') + "/api/v1/service/" + m.service.id, {
                         'type': m.service.type,
                         'cost': m.service.cost,
                         'status': m.service.status
@@ -33,7 +33,7 @@ angular.module("app")
                     alert("Enter Service Status");
                 } else {
                     h.post(
-                        "http://local.restapicalculator.com/api/v1/service", {
+                        s.get('host') + "/api/v1/service", {
                             'type': m.service.type,
                             'cost': m.service.cost,
                             'status': m.service.status
@@ -54,13 +54,13 @@ angular.module("app")
         }
         m.show_data = function() {
             //TODO use pagination from server
-            m.services = r('http://local.restapicalculator.com/api/v1/services?status=active').query();
+            m.services = r(s.get('host') + '/api/v1/services?status=active').query();
         }
         m.delete_data = function(id) {
             if (confirm("Are you sure you want to delete?")) {
                 angular.element('#overlay').fadeIn();
                 h.put(
-                    "http://local.restapicalculator.com/api/v1/service/" + id, {
+                    s.get('host') + "/api/v1/service/" + id, {
                         'status': 'inactive'
                     }
                 ).then(function(response) {
