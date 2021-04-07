@@ -1,50 +1,9 @@
-<!--<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8"> 
-<title>User Management</title>  
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.4/angular-datatables.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
-<script src="../../controllers/user.js"></script>
-</head>  
-<body>-->
 <div ng-include="'../views/site/header.html'"></div>
 <div class="col-md-12">
     <h3 class="text-center">Users Balance</h3>
     <div ng-init="show_data()">
         <div class="row">
-            <!-- <div class="col-md-6">
-                    <label>Name</label>
-                    <input type="text" name="username" ng-model="user.username" class="form-control">
-                    <br/>
-                    <label>Password</label>
-                    <input type="password" name="password" ng-model="user.password" class="form-control">
-                    <br/>
-                    <label>Role</label>
-                    <select ng-model="user.role" class="form-control" ng-options="role for role in user.roles">
-                        <option value="">Select an option</option>
-                    </select>
-                    <br/>
-                    <label>Balance</label>
-                    <input type="number" name="balance" ng-model="user.balance" step=".01" class="form-control" />
-                    <br/>
-                    <label>Status</label>
-                    <select ng-model="user.status" class="form-control" ng-options="status for status in user.statuses">
-                        <option value="">Select an option</option>
-                    </select>
-                    <br/>
-                    <input type="hidden" ng-model="user.id" />
-                    <input type="submit" name="insert" class="btn btn-primary" ng-click="insert()" value="{{btnName}}" />
-                    <input type="submit" name="cancel" class="btn btn-secondary" ng-click="cancel_data()" value="Cancel" />
-                </div> -->
             <div class="col-8 offset-md-2">
-                <!--<table class="table table-responsive table-striped" datatable="ng">-->
                 <table id="userDatatable" class="table table-striped" datatable="ng">
                     <thead>
                         <tr class="text-center">
