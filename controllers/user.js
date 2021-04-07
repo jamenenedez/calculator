@@ -70,18 +70,14 @@ angular.module("app")
                 }
             }
         }
-        m.show_data = function(load = 'full') {
+        m.show_data = function() {
             //TODO use pagination from server
             m.users = r(s.get('host') + '/api/v1/users?status=active').query();
             setTimeout(() => {
                 var table = angular.element("#userDatatable").DataTable();
                 // Setup datatable search field
                 angular.element("input[type='search']").on('keyup', function() {
-                    let column = 2;
-                    if (load == 'custom') {
-                        column = 1;
-                    }
-                    table.columns(column).search(this.value).draw();
+                    table.columns(1).search(this.value).draw();
                 });
             }, 500);
         }
@@ -167,7 +163,7 @@ angular.module("app")
         m.checkAccess = function() {
             return s.get("role") == 'admin';
         }
-    }]).controller('profileCtrl', ["$scope", "$http", "$resource", "localStorageService", function(m, h, r, s) {
+    }]).controller('profileCtrl', ["$scope", "$resource", "localStorageService", function(m, r, s) {
         r(s.get('host') + '/api/v1/user/:id').get({ id: s.get('id') }).$promise.then(function(response) {
             m.user = response;
         });

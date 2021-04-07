@@ -65,7 +65,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
+            if (window.scrollY > 200) {
                 document.getElementById('navbar_top').classList.add('fixed-top');
                 // add padding top to show content behind navbar
                 navbar_height = document.querySelector('.navbar').offsetHeight;
@@ -78,5 +78,24 @@
         });
     });
 </script>
+<script>
+    window.onbeforeunload = confirmExit;
+
+    function confirmExit() {
+        if (confirm("You have attempted to leave this page. Are you sure?")) {
+            localStorage.clear();
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+<style type="text/css">
+    .fixed-top {
+        top: -40px;
+        transform: translateY(40px);
+        transition: transform .3s;
+    }
+</style>
 
 </html>

@@ -1,33 +1,5 @@
 <nav id="navbar_top" class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-
-        <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li> -->
-
-        <!-- <div>
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" style="cursor:pointer;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
-        </div> -->
         <div>
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
@@ -35,29 +7,17 @@
                 </li>
             </ul>
         </div>
-
-        <!-- <div class="dropdown" ng-show="checkAccess()">
-            <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Users
-                </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#!/users">Users Management</a>
-            <a class="dropdown-item" href="#!/users/balance">Users Balance Management</a>
-        </div> -->
         <div ng-show="checkAccess()">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/users">Users Management</a>
+                    <a class="nav-link" href="#!/users">Users</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#!/users/balance">Users Balance Management</a>
-                </li> -->
             </ul>
         </div>
         <div ng-show="checkAccess()">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/users/balance">Users Balance Management</a>
+                    <a class="nav-link" href="#!/users/balance">Users Balance</a>
                 </li>
             </ul>
         </div>
@@ -111,6 +71,7 @@
         </div>
     </div>
 </nav>
+
 <div id="overlay" style="display:none;">
     <div class="spinner"></div>
     <br/> Loading...
